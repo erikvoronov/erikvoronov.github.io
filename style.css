@@ -6,6 +6,11 @@
   font-family: monospace, sans-serif;
 }
 
+::selection {
+  background-color: #2fc260;
+  color: #141414;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
