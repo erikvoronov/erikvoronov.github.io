@@ -52,6 +52,8 @@
           Science student set to graduate December 2026. In my free time I play
           golf and love cars.
         </p>
+        <hr>
+        <p>Click Escape or the background to close</p>
       </div>
     </div>
 
@@ -71,7 +73,7 @@
       }
 
       function closeModal(e) {
-        if (e.target === document.getElementById('modal')) {
+        if (e.target === document.getElementById('modal') || e.key === 'Escape') {
           document.getElementById('modal').classList.remove('open');
         }
       }
