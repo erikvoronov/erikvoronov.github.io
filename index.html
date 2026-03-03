@@ -7,10 +7,45 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="about">
-        <h1 class="name">Erik Voronov</h1>
-        <p class="description">
+    <div class="cross-layout">
+      <div class="arm-top">
+        <div class="info-block top-info">
+          <h1 class="name">Erik Voronov</h1>
+          <p class="subtitle">Full-tack Developer II</p>
+        </div>
+        <div class="v-line"></div>
+      </div>
+
+      <div class="middle-row">
+        <div class="arm-left">
+          <div class="info-block left-info">
+            <a target="_blank" href="https://github.com/erikvoronov">GitHub</a>
+          </div>
+          <div class="h-line"></div>
+        </div>
+
+        <button class="circle" onclick="openModal()" aria-label="About me">About Me</button>
+
+        <div class="arm-right">
+          <div class="h-line"></div>
+          <div class="info-block right-info">
+            <a target="_blank" href="Voronov_Resume.pdf">Resume</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="arm-bottom">
+        <div class="v-line"></div>
+        <div class="info-block bottom-info">
+          <a target="_blank" href="mailto:edvoronov4@gmail.com">Email</a>
+          <span class="description">CS Student · Dec 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+      <div class="modal-card">
+        <p>
           I am a Full-stack Developer II at Johns Hopkins University. I build
           web applications using modern JavaScript frameworks and Java
           frameworks including Spring Boot and AngularJS. I am also a Computer
@@ -18,12 +53,20 @@
           golf and love cars.
         </p>
       </div>
-      <div class="vertical-line"></div>
-      <div class="links">
-        <a target="_blank" href="Voronov_Resume.pdf">Resume</a>
-        <a target="_blank" href="https://github.com/erikvoronov">Visit my Github</a>
-        <a target="_blank" href="mailto:edvoronov4@gmail.com">Email</a>
-      </div>
     </div>
+
+    <script>
+      function openModal() {
+        document.getElementById('modal').classList.add('open');
+      }
+      function closeModal(e) {
+        if (e.target === document.getElementById('modal')) {
+          document.getElementById('modal').classList.remove('open');
+        }
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') document.getElementById('modal').classList.remove('open');
+      });
+    </script>
   </body>
 </html>
