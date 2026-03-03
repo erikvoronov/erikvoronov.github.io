@@ -11,7 +11,7 @@
       <div class="arm-top">
         <div class="info-block top-info">
           <h1 class="name">Erik Voronov</h1>
-          <p class="subtitle">Full-tack Developer II</p>
+          <p class="subtitle">Full-Stack Developer II</p>
         </div>
         <div class="v-line"></div>
       </div>
@@ -24,7 +24,7 @@
           <div class="h-line"></div>
         </div>
 
-        <button class="circle" onclick="openModal()" aria-label="About me">About Me</button>
+        <button class="circle" onclick="handleClick()" aria-label="Click to activate">Click Me</button>
 
         <div class="arm-right">
           <div class="h-line"></div>
@@ -56,14 +56,26 @@
     </div>
 
     <script>
-      function openModal() {
-        document.getElementById('modal').classList.add('open');
+      let activated = false;
+
+      function handleClick() {
+        if (!activated) {
+          activated = true;
+          document.querySelector('.cross-layout').classList.add('activated');
+          const btn = document.querySelector('.circle');
+          btn.textContent = 'About Me';
+          btn.setAttribute('aria-label', 'About me');
+        } else {
+          document.getElementById('modal').classList.add('open');
+        }
       }
+
       function closeModal(e) {
         if (e.target === document.getElementById('modal')) {
           document.getElementById('modal').classList.remove('open');
         }
       }
+
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') document.getElementById('modal').classList.remove('open');
       });

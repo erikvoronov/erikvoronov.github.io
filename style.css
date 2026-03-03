@@ -52,36 +52,52 @@ body {
 .v-line {
   width: 1px;
   height: 30vh;
-  background: #2fc260;
-  box-shadow: 0 0 6px 2px #2fc26088;
+  background: #555;
   transform: scaleY(0);
 }
 
 .arm-top .v-line {
   transform-origin: bottom;
-  animation: growLine 0.9s ease-out 0.3s forwards;
 }
 
 .arm-bottom .v-line {
   transform-origin: top;
-  animation: growLine 0.9s ease-out 0.3s forwards;
 }
 
 .h-line {
   height: 1px;
   flex: 1;
-  background: #2fc260;
-  box-shadow: 0 0 6px 2px #2fc26088;
+  background: #555;
   transform: scaleX(0);
 }
 
 .arm-left .h-line {
   transform-origin: right;
-  animation: growLine 0.9s ease-out 0.3s forwards;
 }
 
 .arm-right .h-line {
   transform-origin: left;
+}
+
+.cross-layout.activated .v-line,
+.cross-layout.activated .h-line {
+  background: #2fc260;
+  box-shadow: 0 0 6px 2px #2fc26088;
+}
+
+.cross-layout.activated .arm-top .v-line {
+  animation: growLine 0.9s ease-out 0.3s forwards;
+}
+
+.cross-layout.activated .arm-bottom .v-line {
+  animation: growLine 0.9s ease-out 0.3s forwards;
+}
+
+.cross-layout.activated .arm-left .h-line {
+  animation: growLine 0.9s ease-out 0.3s forwards;
+}
+
+.cross-layout.activated .arm-right .h-line {
   animation: growLine 0.9s ease-out 0.3s forwards;
 }
 
@@ -90,22 +106,32 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 1px solid #2fc260;
-  box-shadow: 0 0 10px 4px #2fc26088;
+  border: 1px solid #555;
+  box-shadow: none;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: transparent;
-  color: #2fc260;
+  color: #aaa;
   font-size: 0.7em;
   cursor: pointer;
-  transform: scale(0);
-  animation: popIn 0.35s ease-out 0s forwards;
-  transition: box-shadow 0.2s, background 0.2s;
+  transition: color 0.4s, border-color 0.4s, box-shadow 0.4s, background 0.2s;
 }
 
 .circle:hover {
+  background: #55555518;
+  box-shadow: 0 0 8px 2px #55555544;
+}
+
+.cross-layout.activated .circle {
+  border-color: #2fc260;
+  color: #2fc260;
+  box-shadow: 0 0 10px 4px #2fc26088;
+}
+
+.cross-layout.activated .circle:hover {
   background: #2fc26018;
   box-shadow: 0 0 18px 6px #2fc26088;
 }
@@ -116,6 +142,9 @@ body {
   flex-direction: column;
   gap: 4px;
   opacity: 0;
+}
+
+.cross-layout.activated .info-block {
   animation: fadeIn 0.5s ease-out 1.3s forwards;
 }
 
@@ -200,12 +229,6 @@ a:hover {
 
 /* === Keyframes === */
 @keyframes growLine {
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes popIn {
   to {
     transform: scale(1);
   }
